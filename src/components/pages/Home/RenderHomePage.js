@@ -9,6 +9,7 @@ import { RenderSurveyQuestions } from '../SurveyQuestions/RenderSurveyQuestions'
 import { ResponseList } from '../Responses';
 import { getTopicById } from '../../../api/index';
 import { getCurrentTopic } from '../../../state/actions/apolloActions';
+import JoinCode from './JoinCode';
 
 const { Content, Sider } = Layout;
 const { Option } = Select;
@@ -139,9 +140,12 @@ function RenderHomePage(props) {
                 marginLeft: '2rem',
               }}
             >
-              <h2 style={{ textAlign: 'left' }}>
-                {props.currentTopic && props.currentTopic.title}
-              </h2>
+              <div style={{ display: 'flex', flexWrap: 'nowrap' }}>
+                <h2 style={{ textAlign: 'left', marginRight: '20px' }}>
+                  {props.currentTopic && props.currentTopic.title}
+                </h2>
+                <JoinCode joincode={props.currentTopic.joincode} />
+              </div>
               <Select
                 placeholder={requestPlaceholder}
                 dropdownRender={menu => (
